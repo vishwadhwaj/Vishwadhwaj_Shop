@@ -1,5 +1,8 @@
-﻿@model List<Category>
-<partial name="_Notification" />
+﻿@page
+@model Vishwadhwaj_Razor.Pages.Categories.IndexModel
+@{
+}
+
 
 <div class="container">
     <div class="row pt-4">
@@ -9,7 +12,7 @@
             </h2>
         </div>
         <div class="col-6 text-end"> 
-            <a  asp-controller="Category" asp-action="Create" class="btn btn-primary">Create New category</a>
+            <a  asp-page="/categories/create" class="btn btn-primary">Create New category</a>
         </div>
     </div>
 <table class="table table-bordered table-striped">
@@ -24,7 +27,7 @@
     </tr>
     </thead>
     <tbody>
-        @foreach(var obj in Model.OrderBy(u=>u.name))
+        @foreach(var obj in Model.categories.OrderBy(u=>u.name))
         {
             <tr>
                 <td>
@@ -34,10 +37,10 @@
                     @obj.DisplayOrder
                 </td>
                 <td>
-                    <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-primary">Delete</a>
+                    <a asp-page="/categories/delete" asp-route-id="@obj.Id" class="btn btn-primary">Delete</a>
                 </td>
                 <td>
-                    <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary">Edit</a>
+                    <a asp-page="/categories/edit" asp-route-id="@obj.Id" class="btn btn-primary">Edit</a>
                 </td>
             </tr>
         }
